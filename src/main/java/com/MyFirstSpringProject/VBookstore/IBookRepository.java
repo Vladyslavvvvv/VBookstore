@@ -15,11 +15,16 @@ public interface IBookRepository extends JpaRepository<Book, Long> {
             "(:minYear is null or b.year >= :minYear) and " +
             "(:maxYear is null or b.year <= :maxYear) and " +
             "(:minPrice is null or b.price >= :minPrice) and " +
-            "(:maxPrice is null or b.price <= :maxPrice)")
+            "(:maxPrice is null or b.price <= :maxPrice) and " +
+            "(:minRating is null or b.rating >= :minRating) and " +
+            "(:maxRating is null or b.rating <= :maxRating)"
+    )
     List<Book> findByCriteria(@Param("name") String name,
                               @Param("author") String author,
                               @Param("minYear") Integer minYear,
                               @Param("maxYear") Integer maxYear,
                               @Param("minPrice") BigDecimal minPrice,
-                              @Param("maxPrice") BigDecimal maxPrice);
+                              @Param("maxPrice") BigDecimal maxPrice,
+                              @Param("minRating") BigDecimal minRating,
+                              @Param("maxRating") BigDecimal maxRating);
 }

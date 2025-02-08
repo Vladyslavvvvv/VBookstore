@@ -20,6 +20,8 @@ public class Book {
     private int year;
     @Column(name = "price")
     private BigDecimal price;
+    @Column(name = "rating")
+    private BigDecimal rating;
 
     public Long getIdbook() {
         return idbook;
@@ -54,6 +56,13 @@ public class Book {
     }
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public BigDecimal getRating() {
+        return rating;
+    }
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
 
     @Override

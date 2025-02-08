@@ -35,11 +35,13 @@ public class BookController {
             @RequestParam(value = "maxYear", required = false) Integer maxYear,
             @RequestParam(value = "minPrice", required = false) BigDecimal minPrice,
             @RequestParam(value = "maxPrice", required = false) BigDecimal maxPrice,
+            @RequestParam(value = "minRating", required = false) BigDecimal minRating,
+            @RequestParam(value = "maxRating", required = false) BigDecimal maxRating,
             Model model) {
 
         // Calling the method for searching by the received parameters
         // And recording the found books in the list
-        List<Book> books = bookService.searchBooks(name, author, minYear, maxYear, minPrice, maxPrice);
+        List<Book> books = bookService.searchBooks(name, author, minYear, maxYear, minPrice, maxPrice, minRating, maxRating);
 
         // Saving the specified parameters for display in the fields
         // So that you don't have to re-enter them every time
@@ -50,6 +52,8 @@ public class BookController {
         model.addAttribute("maxYear", maxYear);
         model.addAttribute("minPrice", minPrice);
         model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("minRating", minRating);
+        model.addAttribute("maxRating", maxRating);
 
         return "books";
     }
