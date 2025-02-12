@@ -1,5 +1,7 @@
-package com.MyFirstSpringProject.VBookstore;
+package com.MyFirstSpringProject.VBookstore.Service;
 
+import com.MyFirstSpringProject.VBookstore.Model.Book;
+import com.MyFirstSpringProject.VBookstore.Model.IBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import java.util.List;
 @Service
 public class BookService implements IBookService {
 
-    private final IBookRepository IBookRepository;
+    private final com.MyFirstSpringProject.VBookstore.Model.IBookRepository IBookRepository;
 
     @Autowired
     public BookService(IBookRepository IBookRepository) {

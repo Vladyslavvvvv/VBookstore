@@ -1,4 +1,6 @@
-package com.MyFirstSpringProject.VBookstore;
+package com.MyFirstSpringProject.VBookstore.Service;
+
+import com.MyFirstSpringProject.VBookstore.Model.Book;
 
 import java.math.BigDecimal;
 import java.util.List;

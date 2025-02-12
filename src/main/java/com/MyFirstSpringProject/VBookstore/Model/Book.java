@@ -1,4 +1,4 @@
-package com.MyFirstSpringProject.VBookstore;
+package com.MyFirstSpringProject.VBookstore.Model;
 
 import jakarta.persistence.*;
 
