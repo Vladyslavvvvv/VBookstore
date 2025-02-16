@@ -21,6 +21,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    // Display of all books on a page
     @GetMapping("/books")
     public String getBooks(Model model) {
         List<Book> books = bookService.getAllBooks();
@@ -28,6 +29,7 @@ public class BookController {
         return "books";
     }
 
+    // Search for books by parameters
     @GetMapping("/search")
     public String searchBooks(
             // Getting search parameters from a page

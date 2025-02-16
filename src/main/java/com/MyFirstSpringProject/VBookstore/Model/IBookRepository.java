@@ -19,12 +19,12 @@ public interface IBookRepository extends JpaRepository<Book, Long> {
             "(:minRating is null or b.rating >= :minRating) and " +
             "(:maxRating is null or b.rating <= :maxRating)"
     )
-    List<Book> findByCriteria(@Param("name") String name,
-                              @Param("author") String author,
-                              @Param("minYear") Integer minYear,
-                              @Param("maxYear") Integer maxYear,
-                              @Param("minPrice") BigDecimal minPrice,
-                              @Param("maxPrice") BigDecimal maxPrice,
-                              @Param("minRating") BigDecimal minRating,
-                              @Param("maxRating") BigDecimal maxRating);
+    List<Book> findByParameters(@Param("name") String name,
+                                @Param("author") String author,
+                                @Param("minYear") Integer minYear,
+                                @Param("maxYear") Integer maxYear,
+                                @Param("minPrice") BigDecimal minPrice,
+                                @Param("maxPrice") BigDecimal maxPrice,
+                                @Param("minRating") BigDecimal minRating,
+                                @Param("maxRating") BigDecimal maxRating);
 }

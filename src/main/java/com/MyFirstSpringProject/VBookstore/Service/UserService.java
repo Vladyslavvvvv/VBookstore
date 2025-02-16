@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -19,27 +20,24 @@ public class UserService implements IUserService {
         this.IUserRepository = IUserRepository;
     }
 
+    // User search by username
     @Override
-    public List<User> findByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         return IUserRepository.findByUsername(username);
     }
 
+    // Loading the user by username
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Отримуємо список користувачів
-        List<User> users = IUserRepository.findByUsername(username);
+        // Search for a user by username
+        Optional<User> optionalUser = IUserRepository.findByUsername(username);
 
-        // Перевіряємо, чи список не порожній
-        if (!users.isEmpty()) {
-            // Беремо першого користувача (або обробляємо за своїм бажанням)
-            User userObj = users.get(0);
-            return org.springframework.security.core.userdetails.User.builder()
-                    .username(userObj.getUsername())
-                    .password(userObj.getPassword())
-                    .build();
-        } else {
-            // Якщо користувачів не знайдено, кидаємо виняток
-            throw new UsernameNotFoundException(username);
-        }
+        // If the user is not found, we throw an exception
+        User userObj = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(userObj.getUsername())
+                .password(userObj.getPassword())
+                .build();
     }
 }

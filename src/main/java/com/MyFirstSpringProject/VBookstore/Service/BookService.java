@@ -18,13 +18,15 @@ public class BookService implements IBookService {
         this.IBookRepository = IBookRepository;
     }
 
+    // Getting all books
     @Override
     public List<Book> getAllBooks() {
         return IBookRepository.findAll();
     }
 
+    // Search for books
     @Override
     public List<Book> searchBooks(String name, String author, Integer minYear, Integer maxYear, BigDecimal minPrice, BigDecimal maxPrice, BigDecimal minRating, BigDecimal maxRating) {
-        return IBookRepository.findByCriteria(name, author, minYear, maxYear, minPrice, maxPrice, minRating, maxRating);
+        return IBookRepository.findByParameters(name, author, minYear, maxYear, minPrice, maxPrice, minRating, maxRating);
     }
 }

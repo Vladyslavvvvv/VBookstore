@@ -1,0 +1,60 @@
+/* Disabling the scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+.content-table-wrapper::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Disable scrollbar for Firefox */
+.content-table-wrapper {
+    scrollbar-width: none;
+}
+
+/* Fixed width of tables */
+.header-table,
+.content-table {
+    table-layout: fixed;
+    width: 95%;
+}
+
+/* Fixed width of each column */
+.header-table th,
+.content-table td {
+    width: calc(100% / 5); /* The same width for all columns */
+}
+
+.header-table th {
+    background-color: lightgray;
+    border-bottom: 2px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+.content-table-wrapper {
+    max-height: 450px; /* the height of the scrolling area */
+    overflow-y: auto; /* vertical scrolling */
+    display: block;
+}
+
+.content-table td {
+    padding: 8px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.content-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.content-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Form and table alignment */
+.form-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.table-container {
+    flex-grow: 1;
+}
